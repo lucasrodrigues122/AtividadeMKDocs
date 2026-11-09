@@ -612,35 +612,7 @@
 <p>Módulo responsável pela autenticação dos advogados e pelo gerenciamento dos processos jurídicos no <strong>PostgreSQL</strong>. O <strong>Spring Security</strong> gerencia sessões via cookies e impõe controle de acesso, garantindo o isolamento de dados para que cada usuário visualize apenas os seus casos.</p>
 <hr />
 <h3 id="fluxo-de-autenticacao-de-acesso">Fluxo de autenticação de acesso:</h3>
-<pre><code class="language-mermaid">sequenceDiagram
-    autonumber
-    actor Advogado as Advogado (Browser)
-    participant SS as Spring Security
-    participant CC as CasoController
-    participant CR as CasoRepositorio
-    participant DB as PostgreSQL
-
-    box Yellow 1. Autenticação
-    Advogado-&gt;&gt;SS: POST /login (email, senha)
-    SS-&gt;&gt;DB: Busca usuário e valida hash BCrypt
-    DB--&gt;&gt;SS: Usuário válido
-    SS--&gt;&gt;Advogado: 200 OK + Cookie de Sessão
-    end
-
-    box Yellow 2. Acesso aos Dados Isolados
-    Advogado-&gt;&gt;SS: GET /casos (envia Cookie)
-    alt Sessão Inválida ou Ausente
-        SS--&gt;&gt;Advogado: 401 Unauthorized / Redireciona /login.html
-    else Sessão Válida
-        SS-&gt;&gt;CC: Encaminha requisição + Usuário Logado
-        CC-&gt;&gt;CR: findByUsuario(usuarioLogado)
-        CR-&gt;&gt;DB: SELECT * FROM tb_casos WHERE usuario_id = ?
-        DB--&gt;&gt;CR: Lista de casos do usuário
-        CR--&gt;&gt;CC: List&lt;Caso&gt;
-        CC--&gt;&gt;Advogado: 200 OK (Lista de Casos)
-    end
-    end
-</code></pre>
+<p><img alt="Fluxo de Autenticação" src="../img/fluxo-autenticacao.png" /></p>
 <p><em>Diagrama de autenticação de acesso.</em></p>
 <hr />
 <h3 id="modelo-de-banco-de-dados-postgresql">Modelo de Banco de Dados (PostgreSQL)</h3>
