@@ -1,0 +1,874 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.com/lucasrodrigues122/AtividadeMKDocs/regras/">
+      
+      
+        <link rel="prev" href="../arquitetura/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Regras e Fluxos - Documentação do Meu Projeto</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#visao-geral-do-componente" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Documentação do Meu Projeto" class="md-header__button md-logo" aria-label="Documentação do Meu Projeto" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Documentação do Meu Projeto
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Regras e Fluxos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Documentação do Meu Projeto" class="md-nav__button md-logo" aria-label="Documentação do Meu Projeto" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Documentação do Meu Projeto
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regras e Fluxos
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regras e Fluxos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#visao-geral-do-componente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visão Geral do Componente
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fluxo-de-autenticacao-de-acesso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fluxo de autenticação de acesso:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelo-de-banco-de-dados-postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modelo de Banco de Dados (PostgreSQL)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modelo de Banco de Dados (PostgreSQL)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tabela-tb_usuarios-entidade-usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabela: tb_usuarios (Entidade: Usuario)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabela-tb_casos-entidade-caso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabela: tb_casos (Entidade: Caso)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapeamento-das-apis-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapeamento das APIs / Endpoints:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trechos-de-codigo-principais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trechos de código principais:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trechos de código principais:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relacionamento-jpa-na-entidade-casojava" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relacionamento JPA na Entidade (Caso.java):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consulta-filtrada-no-repositorio-casorepositoriojava" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consulta Filtrada no Repositório (CasoRepositorio.java):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regras-de-seguranca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Regras de Segurança
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#visao-geral-do-componente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visão Geral do Componente
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fluxo-de-autenticacao-de-acesso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fluxo de autenticação de acesso:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelo-de-banco-de-dados-postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modelo de Banco de Dados (PostgreSQL)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modelo de Banco de Dados (PostgreSQL)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tabela-tb_usuarios-entidade-usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabela: tb_usuarios (Entidade: Usuario)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabela-tb_casos-entidade-caso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabela: tb_casos (Entidade: Caso)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapeamento-das-apis-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapeamento das APIs / Endpoints:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trechos-de-codigo-principais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trechos de código principais:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trechos de código principais:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relacionamento-jpa-na-entidade-casojava" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relacionamento JPA na Entidade (Caso.java):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consulta-filtrada-no-repositorio-casorepositoriojava" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consulta Filtrada no Repositório (CasoRepositorio.java):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regras-de-seguranca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Regras de Segurança
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Regras e Fluxos</h1>
+
+<blockquote>
+<p>ℹ️ <strong>Categoria:</strong> <code>02_Arquitetura_SAD</code> (Documento de Arquitetura de Software)<br />
+<strong>Projeto:</strong> JURISYNC - Sistema de Gestão para Escritório de Advocacia<br />
+<strong>Módulo:</strong> Autenticação, Segurança e Gestão de Casos<br />
+<strong>Tecnologias:</strong> Java 17, Spring Boot, Spring Security, PostgreSQL, JPA/Hibernate<br />
+<strong>Status: IMPLEMENTADO</strong></p>
+</blockquote>
+<hr />
+<h3 id="visao-geral-do-componente">Visão Geral do Componente</h3>
+<p>Módulo responsável pela autenticação dos advogados e pelo gerenciamento dos processos jurídicos no <strong>PostgreSQL</strong>. O <strong>Spring Security</strong> gerencia sessões via cookies e impõe controle de acesso, garantindo o isolamento de dados para que cada usuário visualize apenas os seus casos.</p>
+<hr />
+<h3 id="fluxo-de-autenticacao-de-acesso">Fluxo de autenticação de acesso:</h3>
+<pre><code class="language-mermaid">sequenceDiagram
+    autonumber
+    actor Advogado as Advogado (Browser)
+    participant SS as Spring Security
+    participant CC as CasoController
+    participant CR as CasoRepositorio
+    participant DB as PostgreSQL
+
+    box Yellow 1. Autenticação
+    Advogado-&gt;&gt;SS: POST /login (email, senha)
+    SS-&gt;&gt;DB: Busca usuário e valida hash BCrypt
+    DB--&gt;&gt;SS: Usuário válido
+    SS--&gt;&gt;Advogado: 200 OK + Cookie de Sessão
+    end
+
+    box Yellow 2. Acesso aos Dados Isolados
+    Advogado-&gt;&gt;SS: GET /casos (envia Cookie)
+    alt Sessão Inválida ou Ausente
+        SS--&gt;&gt;Advogado: 401 Unauthorized / Redireciona /login.html
+    else Sessão Válida
+        SS-&gt;&gt;CC: Encaminha requisição + Usuário Logado
+        CC-&gt;&gt;CR: findByUsuario(usuarioLogado)
+        CR-&gt;&gt;DB: SELECT * FROM tb_casos WHERE usuario_id = ?
+        DB--&gt;&gt;CR: Lista de casos do usuário
+        CR--&gt;&gt;CC: List&lt;Caso&gt;
+        CC--&gt;&gt;Advogado: 200 OK (Lista de Casos)
+    end
+    end
+</code></pre>
+<p><em>Diagrama de autenticação de acesso.</em></p>
+<hr />
+<h3 id="modelo-de-banco-de-dados-postgresql">Modelo de Banco de Dados (PostgreSQL)</h3>
+<p><strong>Relacionamento:</strong> <code>tb_usuarios</code> (1) —— (N) <code>tb_casos</code> (Um usuário possui vários casos e cada caso pertence a um único usuário).</p>
+<h4 id="tabela-tb_usuarios-entidade-usuario">Tabela: <code>tb_usuarios</code> (Entidade: <code>Usuario</code>)</h4>
+<p>Armazena as credenciais e dados dos advogados.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Coluna</th>
+<th style="text-align: left;">Tipo SQL</th>
+<th style="text-align: left;">Chave / Restrição</th>
+<th style="text-align: left;">Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>id</code></td>
+<td style="text-align: left;"><code>BIGINT</code></td>
+<td style="text-align: left;"><code>PRIMARY KEY</code></td>
+<td style="text-align: left;">Identificador único</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>nome</code></td>
+<td style="text-align: left;"><code>VARCHAR(255)</code></td>
+<td style="text-align: left;"><code>NOT NULL</code></td>
+<td style="text-align: left;">Nome completo</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>email</code></td>
+<td style="text-align: left;"><code>VARCHAR(255)</code></td>
+<td style="text-align: left;"><code>UNIQUE, NOT NULL</code></td>
+<td style="text-align: left;">E-mail de login</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>senha</code></td>
+<td style="text-align: left;"><code>VARCHAR(255)</code></td>
+<td style="text-align: left;"><code>NOT NULL</code></td>
+<td style="text-align: left;">Hash da senha (BCrypt)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="tabela-tb_casos-entidade-caso">Tabela: <code>tb_casos</code> (Entidade: <code>Caso</code>)</h4>
+<p>Armazena os processos jurídicos cadastrados.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Coluna</th>
+<th style="text-align: left;">Tipo SQL</th>
+<th style="text-align: left;">Chave / Restrição</th>
+<th style="text-align: left;">Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>id</code></td>
+<td style="text-align: left;"><code>BIGINT</code></td>
+<td style="text-align: left;"><code>PRIMARY KEY</code></td>
+<td style="text-align: left;">Identificador do caso</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>numero_processo</code></td>
+<td style="text-align: left;"><code>VARCHAR(100)</code></td>
+<td style="text-align: left;"><code>NOT NULL</code></td>
+<td style="text-align: left;">Número do processo</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>titulo</code></td>
+<td style="text-align: left;"><code>VARCHAR(255)</code></td>
+<td style="text-align: left;"><code>NOT NULL</code></td>
+<td style="text-align: left;">Título legível</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>descricao</code></td>
+<td style="text-align: left;"><code>TEXT</code></td>
+<td style="text-align: left;">Opcional</td>
+<td style="text-align: left;">Detalhes do caso</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>usuario_id</code></td>
+<td style="text-align: left;"><code>BIGINT</code></td>
+<td style="text-align: left;"><code>FOREIGN KEY</code></td>
+<td style="text-align: left;">Referência a <code>tb_usuarios(id)</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="mapeamento-das-apis-endpoints">Mapeamento das APIs / Endpoints:</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Método</th>
+<th style="text-align: left;">Endpoint</th>
+<th style="text-align: left;">Acesso</th>
+<th style="text-align: left;">Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>GET</code></td>
+<td style="text-align: left;"><code>/login.html</code></td>
+<td style="text-align: left;">Público</td>
+<td style="text-align: left;">Exibe a página de login</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>POST</code></td>
+<td style="text-align: left;"><code>/login</code></td>
+<td style="text-align: left;">Público</td>
+<td style="text-align: left;">Valida credenciais e inicia sessão</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>GET</code></td>
+<td style="text-align: left;"><code>/cadastro.html</code></td>
+<td style="text-align: left;">Público</td>
+<td style="text-align: left;">Exibe formulário de cadastro</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>POST</code></td>
+<td style="text-align: left;"><code>/cadastrar</code></td>
+<td style="text-align: left;">Público</td>
+<td style="text-align: left;">Registra novo usuário (criptografa senha com BCrypt)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>GET</code></td>
+<td style="text-align: left;"><code>/casos</code></td>
+<td style="text-align: left;">Autenticado</td>
+<td style="text-align: left;">Lista os processos do usuário logado</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>POST</code></td>
+<td style="text-align: left;"><code>/logout</code></td>
+<td style="text-align: left;">Autenticado</td>
+<td style="text-align: left;">Encerra a sessão ativa</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="trechos-de-codigo-principais">Trechos de código principais:</h3>
+<h4 id="relacionamento-jpa-na-entidade-casojava">Relacionamento JPA na Entidade (<code>Caso.java</code>):</h4>
+<pre><code class="language-java">@Entity
+@Table(name = &quot;tb_casos&quot;)
+public class Caso {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank
+    private String numeroProcesso;
+
+    private String titulo;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = &quot;usuario_id&quot;, nullable = false)
+    private Usuario usuario;
+
+    // Getters e Setters
+}
+</code></pre>
+<h4 id="consulta-filtrada-no-repositorio-casorepositoriojava">Consulta Filtrada no Repositório (<code>CasoRepositorio.java</code>):</h4>
+<pre><code class="language-java">public interface CasoRepositorio extends JpaRepository&lt;Caso, Long&gt; {
+
+    /**
+     * Busca apenas os processos pertencentes ao usuário informado (garante isolamento).
+     */
+    List&lt;Caso&gt; findByUsuario(Usuario usuario);
+}
+</code></pre>
+<hr />
+<h3 id="regras-de-seguranca">Regras de Segurança</h3>
+<ul>
+<li><strong>Criptografia de Senhas:</strong> Nenhuma senha é armazenada em texto puro. O <code>UsuarioServico</code> utiliza <code>BCryptPasswordEncoder</code> para aplicar hash antes da gravação.</li>
+<li><strong>Proteção de Rotas:</strong> O Spring Security bloqueia requisições não autenticadas para rotas protegidas (<code>/casos</code>, <code>/logout</code>), redirecionando-as para o login.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>

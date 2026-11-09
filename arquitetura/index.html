@@ -1,0 +1,735 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.com/lucasrodrigues122/AtividadeMKDocs/arquitetura/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../regras/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Arquitetura - Documentação do Meu Projeto</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#arquitetura-do-sistema-petshop-generico-c4-model" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Documentação do Meu Projeto" class="md-header__button md-logo" aria-label="Documentação do Meu Projeto" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Documentação do Meu Projeto
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Arquitetura
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Documentação do Meu Projeto" class="md-nav__button md-logo" aria-label="Documentação do Meu Projeto" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Documentação do Meu Projeto
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nivel-1-diagrama-de-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nível 1: Diagrama de Contexto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nível 1: Diagrama de Contexto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#atores-usuarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atores (Usuários)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sistema-central" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sistema Central
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sistemas-externos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sistemas Externos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relacionamentos-e-protocolos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relacionamentos e Protocolos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nivel-2-diagrama-de-containers-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nível 2: Diagrama de Containers (Containers)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nível 2: Diagrama de Containers (Containers)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#containers-internos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Containers Internos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comunicacao-entre-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comunicação entre Containers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../regras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regras e Fluxos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nivel-1-diagrama-de-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nível 1: Diagrama de Contexto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nível 1: Diagrama de Contexto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#atores-usuarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atores (Usuários)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sistema-central" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sistema Central
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sistemas-externos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sistemas Externos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relacionamentos-e-protocolos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relacionamentos e Protocolos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nivel-2-diagrama-de-containers-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nível 2: Diagrama de Containers (Containers)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nível 2: Diagrama de Containers (Containers)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#containers-internos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Containers Internos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comunicacao-entre-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comunicação entre Containers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="arquitetura-do-sistema-petshop-generico-c4-model">Arquitetura do Sistema - Petshop genérico (C4 Model)</h1>
+<p>Este documento descreve a arquitetura de software do sistema <strong>Petshop genérico</strong> utilizando os dois primeiros níveis de abstração do <strong>C4 Model</strong>.</p>
+<hr />
+<h2 id="nivel-1-diagrama-de-contexto">Nível 1: Diagrama de Contexto</h2>
+<p>O Diagrama de Contexto apresenta a visão macro do <strong>Petshop genérico</strong>, mapeando os usuários que interagem com a plataforma e os serviços externos integrados.</p>
+<h3 id="atores-usuarios">Atores (Usuários)</h3>
+<ul>
+<li><strong>Tutor de Pet (<code>[Pessoa]</code>):</strong> Cliente da clínica. Acessa a plataforma para agendar consultas, visualizar histórico de vacinas e efetuar pagamentos.</li>
+<li><strong>Médico Veterinário (<code>[Pessoa]</code>):</strong> Profissional de saúde. Gerencia prontuários médicos, agenda de atendimentos e emissão de exames/prescrições.</li>
+</ul>
+<h3 id="sistema-central">Sistema Central</h3>
+<ul>
+<li><strong>Petshop genérico (<code>[Sistema de Software]</code>):</strong> Plataforma para gestão de clínicas veterinárias, agendamento de serviços, prontuário eletrônico e acompanhamento de vacinação.</li>
+</ul>
+<h3 id="sistemas-externos">Sistemas Externos</h3>
+<ul>
+<li><strong>Gateway de Pagamento (<code>[Sistema Externo]</code>):</strong> Serviço responsável pelo processamento de pagamentos via PIX e Cartão de Crédito.</li>
+<li><strong>Serviço de Mensageria (<code>[Sistema Externo]</code>):</strong> API de terceiros (ex: WhatsApp/SMS) responsável pelo envio de lembretes de consultas e alertas de vacinação.</li>
+</ul>
+<h3 id="relacionamentos-e-protocolos">Relacionamentos e Protocolos</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Origem</th>
+<th style="text-align: left;">Destino</th>
+<th style="text-align: left;">Descrição / Protocolo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Tutor de Pet</td>
+<td style="text-align: left;">Petshop genérico</td>
+<td style="text-align: left;">Agenda consultas e efetua pagamentos <code>[HTTPS]</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Médico Veterinário</td>
+<td style="text-align: left;">Petshop genérico</td>
+<td style="text-align: left;">Registra prontuários e gerencia consultas <code>[HTTPS]</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Petshop genérico</td>
+<td style="text-align: left;">Gateway de Pagamento</td>
+<td style="text-align: left;">Processa transações financeiras <code>[REST / HTTPS]</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Petshop genérico</td>
+<td style="text-align: left;">Serviço de Mensageria</td>
+<td style="text-align: left;">Solicita envio de notificações e lembretes <code>[REST / HTTPS]</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Serviço de Mensageria</td>
+<td style="text-align: left;">Tutor de Pet</td>
+<td style="text-align: left;">Entrega lembretes via WhatsApp/SMS <code>[Assíncrono]</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="nivel-2-diagrama-de-containers-containers">Nível 2: Diagrama de Containers (Containers)</h2>
+<p>O Diagrama de Containers detalha as aplicações, APIs e banco de dados que compõem o <strong>Petshop genérico</strong>.</p>
+<h3 id="containers-internos">Containers Internos</h3>
+<ol>
+<li><strong>Mobile App (Tutor) (<code>[Container: Flutter / Mobile]</code>):</strong></li>
+<li>Interface móvel utilizada pelos tutores para acompanhamento de saúde do pet, histórico de vacinas e solicitações de agendamento.</li>
+<li><strong>Portal Web (Clínica) (<code>[Container: React.js / SPA]</code>):</strong></li>
+<li>Aplicação web utilizada pela equipe veterinária e recepção para controle de agenda e gestão de prontuários eletrônicos.</li>
+<li><strong>API Backend (<code>[Container: Java 17 / Spring Boot]</code>):</strong></li>
+<li>API REST central responsável pelo processamento das regras de negócio, autenticação, agendamentos e prontuário eletrônico.</li>
+<li><strong>Banco de Dados (<code>[Container: PostgreSQL]</code>):</strong></li>
+<li>Banco relacional para armazenamento persistente dos dados de usuários, pets, consultas, prontuários e histórico de vacinas.</li>
+<li><strong>Serviço de Fila de Notificações (<code>[Container: Redis / Worker]</code>):</strong></li>
+<li>Armazenamento em memória para gerenciamento assíncrono do envio de lembretes de consultas e vacinas.</li>
+</ol>
+<h3 id="comunicacao-entre-containers">Comunicação entre Containers</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Origem</th>
+<th style="text-align: left;">Destino</th>
+<th style="text-align: left;">Descrição / Protocolo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Mobile App</td>
+<td style="text-align: left;">API Backend</td>
+<td style="text-align: left;">Requisições de agendamento e perfil <code>[JSON / HTTPS]</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Portal Web</td>
+<td style="text-align: left;">API Backend</td>
+<td style="text-align: left;">Requisições de prontuário e gestão <code>[JSON / HTTPS]</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">API Backend</td>
+<td style="text-align: left;">Banco de Dados</td>
+<td style="text-align: left;">Leitura e escrita de dados <code>[JDBC / SQL]</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">API Backend</td>
+<td style="text-align: left;">Serviço de Fila</td>
+<td style="text-align: left;">Enfileiramento de lembretes <code>[Redis Protocol]</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">API Backend</td>
+<td style="text-align: left;">Gateway de Pagamento</td>
+<td style="text-align: left;">Processamento de cobranças <code>[REST / HTTPS]</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Serviço de Fila</td>
+<td style="text-align: left;">Serviço de Mensageria</td>
+<td style="text-align: left;">Disparo de mensagens externas <code>[REST API]</code></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>
